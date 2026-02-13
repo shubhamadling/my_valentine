@@ -14,12 +14,22 @@ body {
     overflow-x: hidden;
 }
 
-.heart {
+#heartContainer {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+
+.heart {
+    position: absolute;
     color: red;
     animation: float 5s linear infinite;
-    pointer-events: none;
-    z-index: 999;
 }
 
 @keyframes float {
@@ -29,11 +39,8 @@ body {
 
 /* PAGE SECTIONS */
 .page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 /* INTRO PAGE */
@@ -145,7 +152,8 @@ button {
 </head>
 
 <body>
-
+<div id="heartContainer"></div>
+<!-- <div class="heart" style="left:50%; font-size:40px;">❤️</div> -->
 <!-- PAGE 1 -->
 <div id="intro" class="page">
     <h1>Hey Rutu ❤️</h1>
@@ -386,19 +394,23 @@ document.getElementById("quizMessage").innerText = "";
 }
 
 
+const heartContainer = document.getElementById("heartContainer");
+
 setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "❤️";
+
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = Math.random() * 20 + 20 + "px";
 
-    document.body.appendChild(heart);
+    heartContainer.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
     }, 5000);
 }, 300);
+
 
 </script>
 
