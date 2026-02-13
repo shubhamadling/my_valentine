@@ -7,9 +7,23 @@
 <style>
 body {
     margin: 0;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
     font-family: Arial, sans-serif;
-    background: #ffe6f0;
     text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    animation: float 5s linear infinite;
+    z-index: 0;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
 }
 
 /* PAGE SECTIONS */
@@ -370,6 +384,20 @@ qIndex = 0;
 document.getElementById("quizMessage").innerText = "";
 }
 
+
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}, 300);
 
 </script>
 
