@@ -74,7 +74,19 @@ button {
     background:#a0002a;
 }
 
-    
+.letter-card {
+  background: #efeccf;
+  color: #333;
+  max-width: 500px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
 
 /* MESSAGE BOX */
 #messageBox {
@@ -166,7 +178,7 @@ button {
         </div>
 
 
-        <div class="giftCard">
+        <div class="giftCard" onclick="openLetter()">
             <img src="images/gift2.gif" width="120"><br>
             <p>Gift 2</p>
         </div>
@@ -197,6 +209,31 @@ button {
     </button>
 </div>
 
+<!-- LETTER PAGE -->
+<div id="letterPage" class="page" style="display:none;">
+  <h1>A Letter For You 🥺</h1>
+
+  <div class="letter-card">
+    <p>My Dear❤️,</p>
+
+    <p>
+      You have a beautifully irresistible way of claiming my heart,
+    </p>
+
+    <p>
+      Even when you test my patience… I only fall deeper 😉<br>
+      You are my calm, my chaos, and my sweetest habit,
+    </p>
+
+    <p>
+      No matter what happens, my heart will always choose you.<br>
+      Forever yours. ❤️
+    </p>
+  </div>
+
+  <button onclick="goHome()">Back</button>
+</div>
+
 
 <script>
 function goNext() {
@@ -214,6 +251,10 @@ function showGifts() {
     document.getElementById("giftsPage").style.display = "flex";
 }
 
+function openLetter() {
+  hideAllPages();
+  document.getElementById("letterPage").style.display = "block";
+}
 
 /* NO BUTTON + MESSAGE LOGIC */
 const noBtn = document.getElementById("noBtn");
