@@ -183,6 +183,7 @@ button {
             <p>Gift 2</p>
         </div>
 
+
         <div class="giftCard">
             <img src="images/gift3.gif" width="120"><br>
             <p>Gift 3</p>
@@ -231,7 +232,10 @@ button {
     </p>
   </div>
 
-  <button onclick="goHome()">Back</button>
+  <button onclick="backToGifts()" 
+    style="margin-top:25px; background:white; color:#6b0018;">
+        Back
+    </button>
 </div>
 
 
@@ -252,9 +256,10 @@ function showGifts() {
 }
 
 function openLetter() {
-  hideAllPages();
-  document.getElementById("letterPage").style.display = "block";
+    document.getElementById("giftsPage").style.display = "none";
+    document.getElementById("letterPage").style.display = "flex";
 }
+
 
 /* NO BUTTON + MESSAGE LOGIC */
 const noBtn = document.getElementById("noBtn");
