@@ -1,60 +1,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>For You ❤️</title>
+<meta charset="UTF-8">
+<title>For Rutu ❤️</title>
 
-    <style>
-        body {
-            background: #0b0b0b;
-            color: white;
-            text-align: center;
-            font-family: Arial;
-            padding-top: 120px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffe6f0;
+    text-align: center;
+}
 
-        h1 {
-            font-size: 42px;
-        }
+/* PAGE SECTIONS */
+.page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-        button {
-            padding: 12px 25px;
-            font-size: 18px;
-            margin: 10px;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-        }
+/* INTRO PAGE */
+#intro h1 {
+    font-size: 60px;
+    color: #ff4b8b;
+}
 
-        #yesBtn {
-            background: #ff4b8b;
-            color: white;
-        }
+#intro p {
+    font-size: 22px;
+}
 
-        #noBtn {
-            background: #444;
-            color: white;
-            position: absolute;
-        }
-    </style>
+/* BUTTONS */
+button {
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.continueBtn {
+    background: #ff4b8b;
+    color: white;
+}
+
+/* VALENTINE PAGE */
+#valentinePage {
+    display: none;
+}
+
+#yesBtn {
+    background: #ff4b8b;
+    color: white;
+}
+
+#noBtn {
+    background: #444;
+    color: white;
+    position: absolute;
+}
+
+/* MESSAGE ANIMATION */
+#messageBox {
+    height: 60px;
+    overflow: hidden;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #d63384;
+    position: relative;
+}
+
+.message {
+    position: absolute;
+    width: 100%;
+    animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<h1>Will you be mine? ❤️</h1>
+<!-- PAGE 1 -->
+<div id="intro" class="page">
+    <h1>Hey Rutu ❤️</h1>
+    <p>i have something special to ask you.....</p>
+    <button class="continueBtn" onclick="goNext()">Continue</button>
+</div>
 
-<button id="yesBtn" onclick="yesClicked()">Yes</button>
-<button id="noBtn">No</button>
+<!-- PAGE 2 -->
+<div id="valentinePage" class="page">
+    <h1>Will you be my Valentine? 💖</h1>
+
+    <div>
+        <button id="yesBtn" onclick="yesClicked()">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+
+    <div id="messageBox"></div>
+</div>
 
 <script>
-function yesClicked() {
-    document.body.innerHTML = "<h1>I knew it ❤️</h1>";
+function goNext() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("valentinePage").style.display = "flex";
 }
 
-const noBtn = document.getElementById("noBtn");
+function yesClicked() {
+    document.body.innerHTML =
+        "<h1 style='margin-top:200px;color:#ff4b8b;'>I knew it ❤️</h1>";
+}
 
-noBtn.addEventListener("mouseover", () => {
-    noBtn.style.left = Math.random() * window.innerWidth + "px";
-    noBtn.style.top = Math.random() * window.innerHeight + "px";
+/* NO BUTTON LOGIC */
+const noBtn = document.getElementById("noBtn");
+const messageBox = document.getElementById("messageBox");
+
+const messages = [
+"Oh? You clicked No already?",
+"Wow. Bold choice. Very bold.",
+"Are you 'sure' sure? Because my heart disagrees.",
+"Rutu... that button is starting to look suspicious 😉",
+"Okay but imagine saying No to this face 😌",
+"This is getting awkward. Just say Yes already."
+];
+
+let index = 0;
+
+noBtn.addEventListener("click", () => {
+
+    /* move button */
+    noBtn.style.left = Math.random() * window.innerWidth * 0.7 + "px";
+    noBtn.style.top = Math.random() * window.innerHeight * 0.7 + "px";
+
+    /* show animated message */
+    const msg = document.createElement("div");
+    msg.className = "message";
+    msg.innerText = messages[index % messages.length];
+
+    messageBox.innerHTML = "";
+    messageBox.appendChild(msg);
+
+    index++;
 });
 </script>
 
