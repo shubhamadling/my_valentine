@@ -1,389 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>For Rutu ❤️</title>
+    <title>For My Love ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
 
-<style>
-body {
-    margin: 0;
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
-    font-family: Arial, sans-serif;
-    text-align: center;
-    color: white;
-    overflow-x: hidden;
-}
+        h1 {
+            margin-top: 120px;
+            font-size: 50px;
+        }
 
-.heart {
-    position: fixed;
-    color: red;
-    animation: float 5s linear infinite;
-    z-index: 0;
-}
+        p {
+            font-size: 22px;
+        }
 
-@keyframes float {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-10vh); opacity: 0; }
-}
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: #ff4b8b;
+            cursor: pointer;
+            margin-top: 20px;
+        }
 
-/* PAGE SECTIONS */
-.page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+        button:hover {
+            background: #ffe6f0;
+        }
 
-/* INTRO PAGE */
-#intro h1 {
-    font-size: 60px;
-    color: #ff4b8b;
-}
+        .heart {
+            position: fixed;
+            color: red;
+            animation: float 5s linear infinite;
+        }
 
-/* BUTTONS */
-button {
-    padding: 12px 24px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-}
-
-.continueBtn {
-    background: #ff4b8b;
-    color: white;
-}
-
-/* VALENTINE PAGE */
-#valentinePage {
-    display: none;
-    position: relative;
-}
-
-#yesBtn {
-    background: #ff4b8b;
-    color: white;
-}
-
-#noBtn {
-    background: #444;
-    color: white;
-    position: absolute;
-    left: 55%;
-    transition: 0.2s;
-}
-
-.giftCard {
-    background:#8b0023;
-    padding:20px;
-    border-radius:15px;
-    width:200px;
-    transition:0.3s;
-    cursor:pointer;
-}
-
-.giftCard:hover {
-    transform:scale(1.08);
-    background:#a0002a;
-}
-
-.letter-card {
-  background: #efeccf;
-  color: #333;
-  max-width: 500px;
-  margin: auto;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  text-align: left;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-
-/* MESSAGE BOX */
-#messageBox {
-    height: 80px;
-    margin-top: 30px;
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.message {
-    color: #d63384;
-    font-size: 18px;
-    animation: fadeSlide 0.6s ease;
-}
-
-@keyframes fadeSlide {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-@keyframes slideUp {
-    from {
-        transform: translateY(40px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-</style>
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- PAGE 1 -->
-<div id="intro" class="page">
-    <h1>Hey Rutu ❤️</h1>
-    <p>i have something special to ask you.....</p>
-    <button class="continueBtn" onclick="goNext()">Continue</button>
-</div>
-
-<!-- PAGE 2 -->
-<div id="valentinePage" class="page">
-    <h1>Will you be my Valentine? 💖</h1>
-
-    <div>
-        <button id="yesBtn" onclick="yesClicked()">Yes</button>
-        <button id="noBtn">No</button>
-    </div>
-
-    <div id="messageBox"></div>
-</div>
-
-<!-- PAGE 3 - HAPPY VALENTINE -->
-<div id="happyPage" class="page" style="display:none; background:#6b0018; color:white;">
-    <h1 style="font-size:50px;">Happy Valentine Rutu 💍</h1>
-    <p style="max-width:600px;">
-        Every second with you is a celebration.  
-        You are the spark that makes my world so much brighter!
-    </p>
-
-    <button onclick="showGifts()" 
-    style="background:#ff2e63; color:white; margin-top:20px;">
-        See My Gifts 💝
-    </button>
-</div>
-
-
-<!-- PAGE 4 - GIFTS -->
-<div id="giftsPage" class="page" style="display:none; background:#6b0018; color:white;">
-    
-    <h1>Something for You 💖</h1>
-
-    <div style="display:flex; gap:30px; margin-top:30px; flex-wrap:wrap; justify-content:center;">
-        
-        <div class="giftCard" onclick="startQuiz()">
-            <img src="images/gift1.gif" width="120"><br>
-            <p>Gift 1</p>
-        </div>
-
-
-        <div class="giftCard" onclick="openLetter()">
-            <img src="images/gift2.gif" width="120"><br>
-            <p>Gift 2</p>
-        </div>
-
-
-        <div class="giftCard">
-            <img src="images/gift3.gif" width="120"><br>
-            <p>Gift 3</p>
-        </div>
-
-    </div>
-
-</div>
-
-<!-- PAGE 5 — QUIZ -->
-<div id="quizPage" class="page" style="display:none; background:#6b0018; color:white;">
-    
-    <h1>Quiz For You ❤️</h1>
-
-    <h2 id="questionText"></h2>
-
-    <div id="optionsBox"></div>
-
-    <p id="quizMessage" style="margin-top:20px;"></p>
-
-    <button onclick="backToGifts()" 
-    style="margin-top:25px; background:white; color:#6b0018;">
-        Back
-    </button>
-</div>
-
-<!-- LETTER PAGE -->
-<div id="letterPage" class="page" style="display:none;">
-  <h1>A Letter For You 🥺</h1>
-
-  <div class="letter-card">
-    <p>My Dear❤️,</p>
-
-    <p>
-      You have a beautifully irresistible way of claiming my heart,
-    </p>
-
-    <p>
-      Even when you test my patience… I only fall deeper 😉<br>
-      You are my calm, my chaos, and my sweetest habit,
-    </p>
-
-    <p>
-      No matter what happens, my heart will always choose you.<br>
-      Forever yours. ❤️
-    </p>
-  </div>
-
-  <button onclick="backToGifts()" 
-    style="margin-top:25px; background:white; color:#6b0018;">
-        Back
-    </button>
-</div>
-
+<h1>Happy Valentine’s Day ❤️</h1>
+<p>You make my world brighter every day.</p>
+<button onclick="showLove()">Click Me</button>
 
 <script>
-function goNext() {
-    document.getElementById("intro").style.display = "none";
-    document.getElementById("valentinePage").style.display = "flex";
+function showLove() {
+    alert("I love you so much ❤️");
 }
-
-function yesClicked() {
-    document.getElementById("valentinePage").style.display = "none";
-    document.getElementById("happyPage").style.display = "flex";
-}
-
-function showGifts() {
-    document.getElementById("happyPage").style.display = "none";
-    document.getElementById("giftsPage").style.display = "flex";
-}
-
-function openLetter() {
-    document.getElementById("giftsPage").style.display = "none";
-    document.getElementById("letterPage").style.display = "flex";
-}
-
-
-/* NO BUTTON + MESSAGE LOGIC */
-const noBtn = document.getElementById("noBtn");
-const messageBox = document.getElementById("messageBox");
-
-const messages = [
-"Oh? You clicked No already?",
-"Wow. Bold choice. Very bold.",
-"Are you 'sure' sure? Because my heart disagrees.",
-"Rutu... that button is starting to look suspicious 😉",
-"Okay but imagine saying No to this face 😌",
-"This is getting awkward. Just say Yes already."
-];
-
-let index = 0;
-
-noBtn.addEventListener("mouseover", () => {
-    /* move button */
-    noBtn.style.left = Math.random() * 60 + "%";
-    noBtn.style.top = Math.random() * 60 + "%";
-
-    /* show message */
-    const msg = document.createElement("div");
-    msg.className = "message";
-    msg.innerText = messages[index % messages.length];
-
-    messageBox.innerHTML = "";
-    messageBox.appendChild(msg);
-
-    index++;
-});
-
-/* QUIZ LOGIC */
-
-const quiz = [
-{
-question: "Who loves more?",
-options: ["Me", "Obviously You", "My Mom"],
-correct: 1
-},
-{
-question: "What is my favorite thing about you?",
-options: ["Your smile", "Your kindness", "Everything about you"],
-correct: 2
-},
-{
-question: "Our perfect date would be?",
-options: [
-"Watching a movie together",
-"Long walk + talking for hours",
-"Just sitting together doing nothing"
-],
-correct: 2
-}
-];
-
-let qIndex = 0;
-
-function startQuiz() {
-document.getElementById("giftsPage").style.display = "none";
-document.getElementById("quizPage").style.display = "flex";
-loadQuestion();
-}
-
-function loadQuestion() {
-const q = quiz[qIndex];
-document.getElementById("questionText").innerText = q.question;
-
-const box = document.getElementById("optionsBox");
-box.innerHTML = "";
-
-q.options.forEach((opt, i) => {
-const btn = document.createElement("button");
-btn.innerText = opt;
-btn.style.margin = "10px";
-btn.onclick = () => checkAnswer(i);
-box.appendChild(btn);
-});
-}
-
-function checkAnswer(choice) {
-const msg = document.getElementById("quizMessage");
-
-if (choice === quiz[qIndex].correct) {
-msg.innerText = "Correct !! You're so SMART 😍";
-qIndex++;
-
-if (qIndex === quiz.length) {
-setTimeout(() => {
-document.getElementById("questionText").innerText =
-"Yay! You passed the test! You really love me! ❤️🥰";
-document.getElementById("optionsBox").innerHTML = "";
-msg.innerText = "";
-}, 700);
-} else {
-setTimeout(loadQuestion, 700);
-}
-
-} else {
-msg.innerText = "Ohhoo ? Try Again ..!!";
-}
-}
-
-function backToGifts() {
-document.getElementById("quizPage").style.display = "none";
-document.getElementById("giftsPage").style.display = "flex";
-qIndex = 0;
-document.getElementById("quizMessage").innerText = "";
-}
-
 
 setInterval(() => {
     const heart = document.createElement("div");
@@ -391,18 +65,13 @@ setInterval(() => {
     heart.innerHTML = "❤️";
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = Math.random() * 20 + 20 + "px";
-
     document.body.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
     }, 5000);
 }, 300);
-
 </script>
 
 </body>
 </html>
-
-
-
