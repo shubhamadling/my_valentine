@@ -147,14 +147,12 @@ const messages = [
 
 let index = 0;
 
-/* move on hover */
 noBtn.addEventListener("mouseover", () => {
+    /* move button */
     noBtn.style.left = Math.random() * 60 + "%";
     noBtn.style.top = Math.random() * 60 + "%";
-});
 
-/* show message on click */
-noBtn.addEventListener("click", () => {
+    /* show message */
     const msg = document.createElement("div");
     msg.className = "message";
     msg.innerText = messages[index % messages.length];
@@ -164,8 +162,10 @@ noBtn.addEventListener("click", () => {
 
     index++;
 });
+
 </script>
 
 </body>
 </html>
+
 
