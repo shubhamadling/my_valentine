@@ -27,10 +27,6 @@ body {
     color: #ff4b8b;
 }
 
-#intro p {
-    font-size: 22px;
-}
-
 /* BUTTONS */
 button {
     padding: 12px 24px;
@@ -48,6 +44,7 @@ button {
 /* VALENTINE PAGE */
 #valentinePage {
     display: none;
+    position: relative;
 }
 
 #yesBtn {
@@ -59,22 +56,24 @@ button {
     background: #444;
     color: white;
     position: absolute;
+    left: 55%;
 }
 
-/* MESSAGE ANIMATION */
+/* MESSAGE BOX */
 #messageBox {
-    height: 60px;
-    overflow: hidden;
+    height: 70px;
     margin-top: 20px;
-    font-size: 18px;
-    color: #d63384;
+    overflow: hidden;
     position: relative;
+    width: 350px;
 }
 
 .message {
     position: absolute;
     width: 100%;
-    animation: slideUp 0.6s ease;
+    color: #d63384;
+    font-size: 18px;
+    animation: slideUp 0.5s ease;
 }
 
 @keyframes slideUp {
@@ -122,7 +121,7 @@ function yesClicked() {
         "<h1 style='margin-top:200px;color:#ff4b8b;'>I knew it ❤️</h1>";
 }
 
-/* NO BUTTON LOGIC */
+/* NO BUTTON + MESSAGE LOGIC */
 const noBtn = document.getElementById("noBtn");
 const messageBox = document.getElementById("messageBox");
 
@@ -137,13 +136,14 @@ const messages = [
 
 let index = 0;
 
+/* move on hover */
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.left = Math.random() * 60 + "%";
+    noBtn.style.top = Math.random() * 60 + "%";
+});
+
+/* show message on click */
 noBtn.addEventListener("click", () => {
-
-    /* move button */
-    noBtn.style.left = Math.random() * window.innerWidth * 0.7 + "px";
-    noBtn.style.top = Math.random() * window.innerHeight * 0.7 + "px";
-
-    /* show animated message */
     const msg = document.createElement("div");
     msg.className = "message";
     msg.innerText = messages[index % messages.length];
