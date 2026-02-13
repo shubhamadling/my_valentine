@@ -5,78 +5,57 @@
 
     <style>
         body {
-            margin: 0;
-            font-family: Arial;
-            background: linear-gradient(120deg, #ff758c, #ff7eb3);
-            text-align: center;
+            background: #0b0b0b;
             color: white;
+            text-align: center;
+            font-family: Arial;
+            padding-top: 120px;
         }
 
         h1 {
-            margin-top: 80px;
-            font-size: 48px;
-        }
-
-        .gallery img {
-            width: 220px;
-            margin: 10px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            font-size: 42px;
         }
 
         button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 25px;
-            background: white;
-            color: #ff4b8b;
+            padding: 12px 25px;
             font-size: 18px;
+            margin: 10px;
+            border-radius: 25px;
+            border: none;
             cursor: pointer;
-            margin-top: 20px;
         }
 
-        .heart {
-            position: fixed;
-            font-size: 24px;
-            animation: float 6s linear infinite;
+        #yesBtn {
+            background: #ff4b8b;
+            color: white;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh); opacity: 1; }
-            100% { transform: translateY(-10vh); opacity: 0; }
+        #noBtn {
+            background: #444;
+            color: white;
+            position: absolute;
         }
     </style>
 </head>
 
 <body>
 
-<h1>Happy Valentine's Day ❤️</h1>
-<p>Every moment with you is special.</p>
+<h1>Will you be mine? ❤️</h1>
 
-<button onclick="showMessage()">Click for surprise</button>
-
-<h2>Our Memories</h2>
-
-<div class="gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-</div>
+<button id="yesBtn" onclick="yesClicked()">Yes</button>
+<button id="noBtn">No</button>
 
 <script>
-function showMessage() {
-    alert("You are the best thing in my life ❤️");
+function yesClicked() {
+    document.body.innerHTML = "<h1>I knew it ❤️</h1>";
 }
 
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
+const noBtn = document.getElementById("noBtn");
 
-    setTimeout(() => heart.remove(), 6000);
-}, 300);
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.left = Math.random() * window.innerWidth + "px";
+    noBtn.style.top = Math.random() * window.innerHeight + "px";
+});
 </script>
 
 </body>
