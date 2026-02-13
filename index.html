@@ -57,7 +57,24 @@ button {
     color: white;
     position: absolute;
     left: 55%;
+    transition: 0.2s;
 }
+
+.giftCard {
+    background:#8b0023;
+    padding:20px;
+    border-radius:15px;
+    width:200px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.giftCard:hover {
+    transform:scale(1.08);
+    background:#a0002a;
+}
+
+    
 
 /* MESSAGE BOX */
 #messageBox {
@@ -121,6 +138,48 @@ button {
     <div id="messageBox"></div>
 </div>
 
+<!-- PAGE 3 - HAPPY VALENTINE -->
+<div id="happyPage" class="page" style="display:none; background:#6b0018; color:white;">
+    <h1 style="font-size:50px;">Happy Valentine Rutu 💍</h1>
+    <p style="max-width:600px;">
+        Every second with you is a celebration.  
+        You are the spark that makes my world so much brighter!
+    </p>
+
+    <button onclick="showGifts()" 
+    style="background:#ff2e63; color:white; margin-top:20px;">
+        See My Gifts 💝
+    </button>
+</div>
+
+
+<!-- PAGE 4 - GIFTS -->
+<div id="giftsPage" class="page" style="display:none; background:#6b0018; color:white;">
+    
+    <h1>Something for You 💖</h1>
+
+    <div style="display:flex; gap:30px; margin-top:30px; flex-wrap:wrap; justify-content:center;">
+        
+        <div class="giftCard">
+            <img src="images/gift1.gif" width="120"><br>
+            <p>Gift 1</p>
+        </div>
+
+        <div class="giftCard">
+            <img src="images/gift2.gif" width="120"><br>
+            <p>Gift 2</p>
+        </div>
+
+        <div class="giftCard">
+            <img src="images/gift3.gif" width="120"><br>
+            <p>Gift 3</p>
+        </div>
+
+    </div>
+
+</div>
+
+
 <script>
 function goNext() {
     document.getElementById("intro").style.display = "none";
@@ -128,9 +187,15 @@ function goNext() {
 }
 
 function yesClicked() {
-    document.body.innerHTML =
-        "<h1 style='margin-top:200px;color:#ff4b8b;'>I knew it ❤️</h1>";
+    document.getElementById("valentinePage").style.display = "none";
+    document.getElementById("happyPage").style.display = "flex";
 }
+
+function showGifts() {
+    document.getElementById("happyPage").style.display = "none";
+    document.getElementById("giftsPage").style.display = "flex";
+}
+
 
 /* NO BUTTON + MESSAGE LOGIC */
 const noBtn = document.getElementById("noBtn");
@@ -167,5 +232,6 @@ noBtn.addEventListener("mouseover", () => {
 
 </body>
 </html>
+
 
 
