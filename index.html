@@ -323,6 +323,26 @@ button {
  
 </div>
 
+<!-- GIFT 3 PASSWORD PAGE -->
+<div id="gift3Lock" class="page" style="display:none;">
+    <h1>Private Memories 🔐</h1>
+    <p>Enter the password to continue</p>
+
+    <input id="gift3Password" type="password" placeholder="Password"
+           style="padding:10px; border-radius:8px; border:none;">
+
+    <br><br>
+
+    <button onclick="checkGift3Password()">Unlock</button>
+
+    <p id="gift3Error" style="color:#ffd6d6;"></p>
+
+    <button onclick="backToGifts()" style="margin-top:20px;">
+        Back
+    </button>
+</div>
+
+
 <!-- GIFT 3 : OUR MEMORIES -->
 <div id="gift3Page" class="page" style="display:none;">
     <h1>Our Memories ❤️</h1>
@@ -390,8 +410,21 @@ function openLetter() {
 
 function openGift3() {
     hideAllPages();
-    document.getElementById("gift3Page").style.display = "flex";
+    document.getElementById("gift3Lock").style.display = "flex";
 }
+
+function checkGift3Password() {
+    const pass = document.getElementById("gift3Password").value;
+    const error = document.getElementById("gift3Error");
+
+    if (pass === "rutushubh") {
+        document.getElementById("gift3Lock").style.display = "none";
+        document.getElementById("gift3Page").style.display = "flex";
+    } else {
+        error.innerText = "Wrong password ❤️ Try again";
+    }
+}
+
 
 /* NO BUTTON + MESSAGE LOGIC */
 const noBtn = document.getElementById("noBtn");
