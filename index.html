@@ -79,6 +79,7 @@ button {
 #yesBtn {
     background: #ff4b8b;
     color: white;
+    transition: 0.3s ease;
 }
 
 #noBtn {
@@ -86,7 +87,7 @@ button {
     color: white;
     position: absolute;
     left: 55%;
-    transition: 0.2s;
+    transition: 0.3s ease;
 }
 
 .giftCard {
@@ -357,6 +358,7 @@ function openGift3() {
 
 /* NO BUTTON + MESSAGE LOGIC */
 const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
 const messageBox = document.getElementById("messageBox");
 
 const messages = [
@@ -369,22 +371,43 @@ const messages = [
 ];
 
 let index = 0;
+let noScale = 1;
+let yesScale = 1;
 
-noBtn.addEventListener("mouseover", () => {
-    /* move button */
-    noBtn.style.left = Math.random() * 60 + "%";
-    noBtn.style.top = Math.random() * 60 + "%";
+function moveNoButton() {
 
-    /* show message */
-    const msg = document.createElement("div");
-    msg.className = "message";
-    msg.innerText = messages[index % messages.length];
+    // Random position within screen
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
-    messageBox.innerHTML = "";
-    messageBox.appendChild(msg);
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
 
+    // Show message
+    messageBox.innerHTML = messages[index % messages.length];
     index++;
-});
+
+    // After 6 attempts — DRAMA MODE 😏
+    if (index >= 6) {
+        noScale -= 0.1;
+        yesScale += 0.1;
+
+        noBtn.style.transform = `scale(${noScale})`;
+        yesBtn.style.transform = `scale(${yesScale})`;
+    }
+
+    // Prevent NO from disappearing completely
+    if (noScale <= 0.4) {
+        noScale = 0.4;
+    }
+}
+
+// Desktop
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+// Mobile
+noBtn.addEventListener("click", moveNoButton);
 
 /* QUIZ LOGIC */
 
