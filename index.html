@@ -116,6 +116,41 @@ button {
   line-height: 1.6;
 }
 
+.memoryGallery {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.memoryFrame {
+    background: white;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
+    transform: rotate(-2deg);
+    transition: 0.3s;
+}
+
+.memoryFrame:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.memoryFrame:nth-child(3) {
+    transform: rotate(-3deg);
+}
+
+.memoryFrame:hover {
+    transform: scale(1.05);
+}
+
+.memoryFrame img {
+    width: 220px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
 
 /* MESSAGE BOX */
 #messageBox {
@@ -214,7 +249,7 @@ button {
         </div>
 
 
-        <div class="giftCard">
+        <div class="giftCard" onclick="openGift3()">
             <img src="images/gift3.gif" width="120"><br>
             <p>Gift 3</p>
         </div>
@@ -268,6 +303,28 @@ button {
     </button>
 </div>
 
+<!-- GIFT 3 : OUR MEMORIES -->
+<div id="gift3Page" class="page" style="display:none;">
+    <h1>Our Memories ❤️</h1>
+
+    <div class="memoryGallery">
+        <div class="memoryFrame">
+            <img src="images/pic1.JPG">
+        </div>
+
+        <div class="memoryFrame">
+            <img src="images/pic2.JPG">
+        </div>
+
+        <div class="memoryFrame">
+            <img src="images/pic3.JPG">
+        </div>
+    </div>
+
+    <button onclick="goBackToGifts()">Back</button>
+</div>
+
+
 
 <script>
 function goNext() {
@@ -290,6 +347,10 @@ function openLetter() {
     document.getElementById("letterPage").style.display = "flex";
 }
 
+function openGift3() {
+    document.getElementById("giftsPage").style.display = "none";
+    document.getElementById("gift3Page").style.display = "flex";
+}
 
 /* NO BUTTON + MESSAGE LOGIC */
 const noBtn = document.getElementById("noBtn");
