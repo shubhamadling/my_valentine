@@ -104,6 +104,7 @@ button {
     background:#a0002a;
 }
 
+
 .letter-card {
   background: #efeccf;
   color: #333;
@@ -115,7 +116,19 @@ button {
   text-align: left;
   font-size: 18px;
   line-height: 1.6;
+  animation: fadeSlide 0.8s ease;
 }
+#letterPage {
+    justify-content: flex-start;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.backBtn {
+    margin-top: 20px;
+    background: white;
+    color: #6b0018;
+}   
 
 .memoryGallery {
     display: flex;
@@ -298,10 +311,8 @@ button {
     </p>
   </div>
 
-  <button onclick="backToGifts()" 
-    style="margin-top:25px; background:white; color:#6b0018;">
-        Back
-    </button>
+  <button class="backBtn" onclick="backToGifts()">Back</button>
+ 
 </div>
 
 <!-- GIFT 3 : OUR MEMORIES -->
