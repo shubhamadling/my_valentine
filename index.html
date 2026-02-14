@@ -384,6 +384,8 @@ function hideAllPages() {
     document.getElementById("quizPage").style.display = "none";
     document.getElementById("letterPage").style.display = "none";
     document.getElementById("gift3Page").style.display = "none";
+    document.getElementById("gift3Lock").style.display = "none";
+    document.getElementById("happyPage").style.display = "none";
 }
 
 
@@ -400,6 +402,7 @@ function yesClicked() {
 
 function showGifts() {
     document.getElementById("happyPage").style.display = "none";
+    hideAllPages();
     document.getElementById("giftsPage").style.display = "flex";
 }
 
@@ -418,7 +421,7 @@ function checkGift3Password() {
     const error = document.getElementById("gift3Error");
 
     if (pass === "rutushubh") {
-        document.getElementById("gift3Lock").style.display = "none";
+        hideAllPages();
         document.getElementById("gift3Page").style.display = "flex";
     } else {
         error.innerText = "Wrong password ❤️ Try again";
