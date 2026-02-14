@@ -331,6 +331,15 @@ button {
 
 
 <script>
+
+function hideAllPages() {
+    document.getElementById("giftsPage").style.display = "none";
+    document.getElementById("quizPage").style.display = "none";
+    document.getElementById("letterPage").style.display = "none";
+    document.getElementById("gift3Page").style.display = "none";
+}
+
+
 function goNext() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("valentinePage").style.display = "flex";
@@ -342,17 +351,17 @@ function yesClicked() {
 }
 
 function showGifts() {
-    document.getElementById("happyPage").style.display = "none";
+    hideAllPages();
     document.getElementById("giftsPage").style.display = "flex";
 }
 
 function openLetter() {
-    document.getElementById("giftsPage").style.display = "none";
+    hideAllPages();
     document.getElementById("letterPage").style.display = "flex";
 }
 
 function openGift3() {
-    document.getElementById("giftsPage").style.display = "none";
+    hideAllPages();
     document.getElementById("gift3Page").style.display = "flex";
 }
 
@@ -436,7 +445,7 @@ correct: 2
 let qIndex = 0;
 
 function startQuiz() {
-document.getElementById("giftsPage").style.display = "none";
+hideAllPages();
 document.getElementById("quizPage").style.display = "flex";
 loadQuestion();
 }
@@ -480,11 +489,20 @@ msg.innerText = "Ohhoo ? Try Again ..!!";
 }
 }
 
+
+
 function backToGifts() {
-document.getElementById("quizPage").style.display = "none";
-document.getElementById("giftsPage").style.display = "flex";
-qIndex = 0;
-document.getElementById("quizMessage").innerText = "";
+    // Hide ALL gift sub-pages
+    document.getElementById("quizPage").style.display = "none";
+    document.getElementById("letterPage").style.display = "none";
+    document.getElementById("gift3Page").style.display = "none";
+
+    // Show gifts page
+    document.getElementById("giftsPage").style.display = "flex";
+
+    // Reset quiz state
+    qIndex = 0;
+    document.getElementById("quizMessage").innerText = "";
 }
 
 
