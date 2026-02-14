@@ -351,7 +351,7 @@ function yesClicked() {
 }
 
 function showGifts() {
-    hideAllPages();
+    document.getElementById("happyPage").style.display = "none";
     document.getElementById("giftsPage").style.display = "flex";
 }
 
@@ -445,7 +445,7 @@ correct: 2
 let qIndex = 0;
 
 function startQuiz() {
-hideAllPages();
+document.getElementById("giftsPage").style.display = "none";
 document.getElementById("quizPage").style.display = "flex";
 loadQuestion();
 }
