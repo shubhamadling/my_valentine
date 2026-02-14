@@ -209,6 +209,11 @@ button {
 </head>
 
 <body>
+
+<audio id="bgMusic" loop>
+    <source src="audio/love.mp3" type="audio/mpeg">
+</audio>
+
 <div id="heartContainer"></div>
 <!-- <div class="heart" style="left:50%; font-size:40px;">❤️</div> -->
 <!-- PAGE 1 -->
@@ -344,6 +349,14 @@ button {
 
 <script>
 
+const music = document.getElementById("bgMusic");
+
+function startMusic() {
+    music.volume = 0.4; // softer romantic vibe
+    music.play().catch(() => {});
+}
+
+
 function hideAllPages() {
     document.getElementById("giftsPage").style.display = "none";
     document.getElementById("quizPage").style.display = "none";
@@ -353,6 +366,7 @@ function hideAllPages() {
 
 
 function goNext() {
+    startMusic();
     document.getElementById("intro").style.display = "none";
     document.getElementById("valentinePage").style.display = "flex";
 }
