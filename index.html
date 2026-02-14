@@ -221,7 +221,7 @@ button {
 <!-- PAGE 1 -->
 <div id="intro" class="page">
     <h1>Hey Rutu ❤️</h1>
-    <p>i have something special to ask you.....</p>
+    <p>I have something special to ask you.....</p>
     <button class="continueBtn" onclick="goNext()">Continue</button>
 </div>
 
@@ -401,7 +401,6 @@ function yesClicked() {
 }
 
 function showGifts() {
-    document.getElementById("happyPage").style.display = "none";
     hideAllPages();
     document.getElementById("giftsPage").style.display = "flex";
 }
@@ -560,6 +559,7 @@ function backToGifts() {
     document.getElementById("quizPage").style.display = "none";
     document.getElementById("letterPage").style.display = "none";
     document.getElementById("gift3Page").style.display = "none";
+    document.getElementById("gift3Lock").style.display = "none";
 
     // Show gifts page
     document.getElementById("giftsPage").style.display = "flex";
